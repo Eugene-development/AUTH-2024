@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,14 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-require __DIR__.'/auth.php';
+Route::get('/test-db', function () {
+    try {
+        DB::connection()->getPdo();
+        return 'База данных подключена!!!';
+    } catch (\Exception $e) {
+        return 'Unable to connect to the database: ' . $e->getMessage();
+    }
+});
+
+
+require __DIR__ . '/auth.php';

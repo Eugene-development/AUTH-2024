@@ -2,9 +2,10 @@ version: "3"
 services:
   #PHP Service
   app:
-    build:
-      context: .
-      dockerfile: ./docker/php/Dockerfile
+    image: larux/auth2024:280224
+    # build:
+    #   context: .
+    #   dockerfile: ./docker/php/Dockerfile
     #    image: php:7.3-fpm
     container_name: "${COMPOSE_PROJECT_NAME}_PHP"
     restart: unless-stopped
